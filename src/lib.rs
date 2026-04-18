@@ -314,4 +314,4 @@ impl Ord for PrivateKey {
 }
 
 #[cfg(test)]
-pub mod tests;
+mod tests;
