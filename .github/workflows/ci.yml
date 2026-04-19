@@ -92,15 +92,13 @@ jobs:
       - name: Inspect LCOV paths
         run: grep '^SF:' lcov.info
 
-      - name: Normalize LCOV paths
-        run: sed -i 's#^SF:/#SF:#' lcov.info
-
       - name: Upload to Coveralls
         uses: coverallsapp/github-action@648a8eb78e6d50909eff900e4ec85cab4524a45b # v2.3.6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           file: lcov.info
           format: lcov
+          base-path: ${{ github.workspace }}
           debug: true
 
   audit:
