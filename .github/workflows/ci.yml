@@ -98,7 +98,6 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           file: lcov.info
           format: lcov
-          base-path: ${{ github.workspace }}
           debug: true
 
   audit:
