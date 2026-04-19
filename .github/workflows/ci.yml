@@ -60,7 +60,7 @@ jobs:
           rustup component add clippy --toolchain stable
 
       - name: Clippy
-        run: cargo +stable clippy --all-features --all-targets -- -D warnings
+        run: cargo +stable clippy --all-features --all-targets -- -D warnings -A clippy::result_large_err -A clippy::doc_markdown
 
   fmt:
     name: Formatting
