@@ -87,7 +87,14 @@ jobs:
           cargo +stable install cargo-llvm-cov --locked
 
       - name: Generate coverage
-        run: cargo +stable llvm-cov
+        run: cargo +stable llvm-cov --lcov --output-path lcov.info
+
+      - name: Upload to Coveralls
+        uses: coverallsapp/github-action@648a8eb78e6d50909eff900e4ec85cab4524a45b # v2.3.6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          file: lcov.info
+          format: lcov
 
   audit:
     name: Security Audit
