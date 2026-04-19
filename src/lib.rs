@@ -28,7 +28,7 @@ pub struct PublicKey {
 impl PartialEq for PublicKey {
     #[allow(trivial_casts)]
     fn eq(&self, other: &Self) -> bool {
-        self.algorithm as *const Algorithm == other.algorithm as *const Algorithm
+        std::ptr::eq(self.algorithm, other.algorithm)
             && self.zero_values == other.zero_values
             && self.one_values == other.one_values
     }
